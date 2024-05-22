@@ -1,145 +1,148 @@
+/* Estilo general del cuerpo */
 body {
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    font-family: 'Open Sans', Verdana,Geneva,Tahoma,sans-serif;
-    flex-direction: column;
-    background-color: #40c7f7;
+    margin: 0; // Eliminar márgenes predeterminados
+    padding: 0; // Eliminar padding predeterminado
+    min-height: 100vh; // Asegurar que la altura mínima sea la de la ventana
+    font-family: 'Open Sans', Verdana, Geneva, Tahoma, sans-serif; // Fuente del texto
+    flex-direction: column; // Dirección de los elementos flexibles
+    background-color: #40c7f7; // Color de fondo
 }
-/*Header*/
+
+/* Header */
 header {
-    position: fixed;
-    display: flex;
-    flex-direction: row;
-    top: 5%;
-    justify-content: space-around;
+    position: fixed; // Fijar el header en la parte superior
+    display: flex; // Usar flexbox para el layout
+    flex-direction: row; // Disposición en fila
+    top: 5%; // Espaciado desde la parte superior
+    justify-content: space-around; // Distribuir espacio equitativamente
 }
-/*Nav*/
+
+/* Nav y elementos relacionados */
 body, nav, #links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: flex; // Usar flexbox para el layout
+    justify-content: center; // Centrar horizontalmente
+    align-items: center; // Centrar verticalmente
 }
 
 nav {
-    position: relative;
-    background-color: #fff;
-    padding: 20px;
-    transition: 0.5s;
-    border-radius: 50px;
-    overflow: hidden;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, .2);
+    position: relative; // Posicionamiento relativo
+    background-color: #fff; // Color de fondo blanco
+    padding: 20px; // Padding interno
+    transition: 0.5s; // Transición suave para cambios
+    border-radius: 50px; // Bordes redondeados
+    overflow: hidden; // Ocultar desbordamientos
+    box-shadow: 0 8px 15px rgba(0, 0, 0, .2); // Sombra del cuadro
 }
 
 #links {
-    margin: 0;
-    padding: 0;
-    width: 0;
-    overflow: hidden;
-    transition: 0.5s;
+    margin: 0; // Eliminar márgenes
+    padding: 0; // Eliminar padding
+    width: 0; // Ancho inicial cero
+    overflow: hidden; // Ocultar desbordamientos
+    transition: 0.5s; // Transición suave para cambios
 }
 
 nav input:checked~#links {
-    width: 450px;
+    width: 450px; // Ancho cuando el input está marcado
 }
 
 #links li {
-    list-style: none;
-    margin: 0 10px;
+    list-style: none; // Sin estilo de lista
+    margin: 0 10px; // Márgenes laterales
 }
 
 #links li a {
-    text-decoration: none;
-    color: #666;
-    text-transform: uppercase;
-    font-weight: 600;
-    transition: 0.5s;
+    text-decoration: none; // Sin subrayado
+    color: #666; // Color del texto
+    text-transform: uppercase; // Texto en mayúsculas
+    font-weight: 600; // Grosor de fuente
+    transition: 0.5s; // Transición suave para cambios
 }
 
 #links li a:hover {
-    color: #161919;
+    color: #161919; // Color al pasar el mouse
 }
 
 nav input {
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    opacity: 0;
+    width: 40px; // Ancho del input
+    height: 40px; // Altura del input
+    cursor: pointer; // Cursor de mano
+    opacity: 0; // Input invisible
 }
 
 nav span {
-    position: absolute;
-    left: 30px;
-    width: 30px;
-    height: 4px;
-    border-radius: 50px;
-    background-color: #666;
-    pointer-events: none;
-    transition: 0.5s;
+    position: absolute; // Posicionamiento absoluto
+    left: 30px; // Espaciado desde la izquierda
+    width: 30px; // Ancho de la barra
+    height: 4px; // Altura de la barra
+    border-radius: 50px; // Bordes redondeados
+    background-color: #666; // Color de la barra
+    pointer-events: none; // Sin interacción del usuario
+    transition: 0.5s; // Transición suave para cambios
 }
 
 nav input:checked~span {
-    background-color: #f974a1;
+    background-color: #f974a1; // Color de la barra cuando el input está marcado
 }
 
 nav span:nth-child(2) {
-    transform: translateY(-8px);
+    transform: translateY(-8px); // Mover hacia arriba
 }
 
 nav input:checked~span:nth-child(2) {
-    transform: translateY(0) rotate(-45deg);
+    transform: translateY(0) rotate(-45deg); // Rotación al marcar el input
 }
 
 nav span:nth-child(3) {
-    transform: translateY(8px);
+    transform: translateY(8px); // Mover hacia abajo
 }
 
 nav input:checked~span:nth-child(3) {
-    transform: translateY(0) rotate(45deg);
+    transform: translateY(0) rotate(45deg); // Rotación al marcar el input
 }
 
-/*Main*/
-main{
-    
-    font-size: 200%;
-    margin: 30px;
-    padding: 90px 30px 30px 30px;
-    word-wrap: break-word;
-    flex-direction: column;
-}
-#galeria{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+/* Main */
+main {
+    font-size: 200%; // Tamaño de fuente
+    margin: 30px; // Márgenes externos
+    padding: 90px 30px 30px 30px; // Padding interno
+    word-wrap: break-word; // Ajuste de palabras
+    flex-direction: column; // Dirección de los elementos flexibles
 }
 
-#autores{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+#galeria {
+    display: flex; // Usar flexbox para el layout
+    flex-direction: row; // Disposición en fila
+    justify-content: space-around; // Distribuir espacio equitativamente
 }
 
-#galeria img{
-
-    width: 30%;
-    height: 30%;
-    border-radius: 20%;
-    transition: transform 0.5s ease;
-}
-#galeria img:hover{
-    transform: scale(1.20);
-    /*filter: brightness(0.8) blur(2px);*/
+#autores {
+    display: flex; // Usar flexbox para el layout
+    flex-direction: row; // Disposición en fila
+    justify-content: space-around; // Distribuir espacio equitativamente
 }
 
-/*Main*/
-footer{
-    font-size: 14px;
-    height: 15%;
-    line-height: 30px;
-    background: #AAAAAA;
-    text-align: center;
-    position: relative;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+#galeria img {
+    width: 30%; // Ancho de la imagen
+    height: 30%; // Altura de la imagen
+    border-radius: 20%; // Bordes redondeados
+    transition: transform 0.5s ease; // Transición suave para transformaciones
+}
+
+#galeria img:hover {
+    transform: scale(1.20); // Escalar al pasar el mouse
+    // filter: brightness(0.8) blur(2px); // Comentado: Ajuste de brillo y desenfoque
+}
+
+/* Footer */
+footer {
+    font-size: 14px; // Tamaño de fuente
+    height: 15%; // Altura del footer
+    line-height: 30px; // Altura de línea
+    background: #AAAAAA; // Color de fondo
+    text-align: center; // Alinear texto al centro
+    position: relative; // Posicionamiento relativo
+    bottom: 0; // Posición inferior
+    left: 0; // Posición a la izquierda
+    width: 100%; // Ancho completo
 }
