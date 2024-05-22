@@ -11,13 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet(urlPatterns =
-{
-    "/reservasSV"
-})
+ //Servlet que maneja las reservas de vuelos.
+@WebServlet(urlPatterns = { "/reservasSV" })
 public class reservasSV extends HttpServlet {
 
-    
     // Lista de vuelos simulada
     private static List<Vuelo> vuelos = new ArrayList<>();
     
@@ -31,15 +28,15 @@ public class reservasSV extends HttpServlet {
         vuelos.add(new Vuelo("V131", "Pereira", "Cartagena", 1));
     }
     
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        // Método no implementado
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //Eliminar reserva
+        // Eliminar reserva
         String mensaje = "";
         String id = request.getParameter("id");
         String numeroVuelo = request.getParameter("numeroVuelo");
@@ -51,7 +48,7 @@ public class reservasSV extends HttpServlet {
         
         HttpSession miSesion = request.getSession();
         miSesion.setAttribute("msg", mensaje);
-        response.sendRedirect("Reservar.jsp");//Reenviar a JSP
+        response.sendRedirect("Reservar.jsp");
     }
 
     @Override
@@ -62,20 +59,19 @@ public class reservasSV extends HttpServlet {
         String nombre = request.getParameter("nombre");
         String documento = request.getParameter("documento");
 
-        // Aquí buscarías el vuelo en una lista de vuelos y harías la reserva
-        // Ejemplo simplificado:
+        // Realizar una reserva
         Vuelo vuelo = encontrarNumeroVuelo(numeroVuelo);
-        String mensaje,id="";
+        String mensaje = "", id = "";
         if (vuelo != null) {
             int asientoDisponible = encontrarAsientosDisponibles(vuelo);
-            if (asientoDisponible != -1){
-                Pasajero pasajero = new Pasajero(nombre,documento);
-                Reservacion reservacion = new Reservacion(generarIdReservacion(), pasajero, vuelo, encontrarAsientosDisponibles(vuelo));
+            if (asientoDisponible != -1) {
+                Pasajero pasajero = new Pasajero(nombre, documento);
+                Reservacion reservacion = new Reservacion(generarIdReservacion(), pasajero, vuelo, asientoDisponible);
                 vuelo.getReservaciones().add(reservacion);
                 vuelo.getAsientos()[asientoDisponible] = true;
                 mensaje = "Reserva exitosa";
-                id=reservacion.getId();
-            }else{
+                id = reservacion.getId();
+            } else {
                 mensaje = "No hay asientos disponibles";
             }
         } else {
@@ -84,11 +80,10 @@ public class reservasSV extends HttpServlet {
         HttpSession miSesion = request.getSession();
         miSesion.setAttribute("listaUsuarios", mensaje);
         miSesion.setAttribute("id", id);
-        miSesion.setAttribute("vuelos",vuelos);
-        response.sendRedirect("Reservar.jsp");//Reenviar a JSP
+        miSesion.setAttribute("vuelos", vuelos);
+        response.sendRedirect("Reservar.jsp");
     }
-    
-///////////////////////////////////////////////////
+
     private Vuelo encontrarNumeroVuelo(String numeroVuelo) {
         for (Vuelo vuelo : vuelos) {
             if (vuelo.getNumeroVuelo().equals(numeroVuelo)) {
@@ -98,7 +93,7 @@ public class reservasSV extends HttpServlet {
         return null; // Vuelo no encontrado
     }
 
-    private String generarIdReservacion() { 
+    private String generarIdReservacion() {
         return "RES" + new Random().nextInt(10000); // Generar ID aleatorio
     }
 
@@ -114,6 +109,5 @@ public class reservasSV extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
-
+    }
 }
